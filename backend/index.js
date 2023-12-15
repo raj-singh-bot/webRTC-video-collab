@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 app.use(
   cors({
-    origin: ["https://p2pshare-rho.vercel.app/p2p"],
+    origin: "https://p2pshare-rho.vercel.app",
     methods: ["POST", "GET"],
     credentials: true,
   })
