@@ -6,7 +6,7 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
 import Navbar from "../components/Navbar";
-import IconCardButton from "../components/IconCardButton";
+import IconCardButton from "../components/IconCardbutton";
 // import Footer from 'components/Footer'
 
 const Homepage = () => {
