@@ -13,7 +13,7 @@ io.attach(server);
 
 app.use(
   cors({
-    origin: ["https://web-rtc-video-collab.vercel.app"],
+    origin: ["https://p2pshare-rho.vercel.app/p2p"],
     methods: ["POST", "GET"],
     credentials: true,
   })
