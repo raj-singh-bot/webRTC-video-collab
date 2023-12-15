@@ -11,8 +11,13 @@ const server = http.createServer(app);
 const io = new SocketServer({ cors: { origin: "*" } });
 io.attach(server);
 
-
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://web-rtc-video-collab.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 /* State Variables */
@@ -52,7 +57,7 @@ io.on("connection", (socket) => {
     if (users.has(socket.id)) {
       users.get(socket.id).isConnected = true;
     }
-    console.log('sss', socket.id, users.get(socket.id), offer)
+    console.log("sss", socket.id, users.get(socket.id), offer);
     socket.to(to).emit("peer:call:accepted", {
       from: socket.id,
       user: users.get(socket.id),
@@ -106,7 +111,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/users", (req, res) => {
-  const idleUsers= Array.from(users.values())
+  const idleUsers = Array.from(users.values())
     .map((e) => ({
       ...e,
     }))
