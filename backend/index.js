@@ -8,9 +8,6 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 
 const server = http.createServer(app);
-const io = new SocketServer({ cors: { origin: "*" } });
-io.attach(server);
-
 app.use(
   cors({
     origin: ["https://p2pshare-rho.vercel.app/p2p"],
@@ -18,6 +15,11 @@ app.use(
     credentials: true,
   })
 );
+const io = new SocketServer({
+  cors: { origin: "https://p2pshare-rho.vercel.app" },
+});
+io.attach(server);
+
 app.use(express.json());
 
 /* State Variables */
