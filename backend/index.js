@@ -15,7 +15,7 @@ app.use(
 );
 
 const server = http.createServer(app);
-const io = new SocketServer({ cors: { origin: "*" } });
+const io = new SocketServer({ cors: { origin: "*" }, allowEIO3: true });
 io.attach(server);
 
 app.use(express.json());
