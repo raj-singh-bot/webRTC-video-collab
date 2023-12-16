@@ -6,18 +6,16 @@ import cors from "cors";
 
 const PORT = process.env.PORT || 8000;
 const app = express();
-
-const server = http.createServer(app);
 app.use(
   cors({
-    origin: "https://p2pshare-rho.vercel.app",
+    origin: "https://p2pshare-rho.vercel.app", // Replace with your frontend domain
     methods: ["POST", "GET"],
     credentials: true,
   })
 );
-const io = new SocketServer({
-  cors: { origin: "https://p2pshare-rho.vercel.app" },
-});
+
+const server = http.createServer(app);
+const io = new SocketServer({ cors: { origin: "*" } });
 io.attach(server);
 
 app.use(express.json());
